@@ -25,7 +25,7 @@ app.set('port', process.env.PORT || 3333);
 app.use(express.static(__dirname + '/untitled_VR'));
 app.get('/troisd', function(req, res){
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
-  res.setHeader('Access-Control-Allow-Origin', 'http://192.168.8.104:3000');   
+    
   
   res.sendFile(__dirname+'/untitled_VR/untitled_VR.65.html');  });
  //res.sendFile('/untitled_VR/untitled_VR.65.html',{ root: __dirname });  });
@@ -36,13 +36,13 @@ app.get('/troisd', function(req, res){
 
 app.get('/', function(req, res){
 res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
-res.setHeader('Access-Control-Allow-Origin', 'http://192.168.8.104:3000');   
+ 
 res.type('text/plain');
 res.send(R_state);  });
 
 app.get('/:Relay', function(req, res){
 res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
-res.setHeader('Access-Control-Allow-Origin', 'http://192.168.8.104:3000');     
+
 res.type('text/plain');
 console.log(R_state[req.params.Relay]);
 res.send(R_state[req.params.Relay]); 
@@ -55,7 +55,7 @@ res.send(R_state[req.params.Relay]);
 
 app.get('/set/:Relay', function(req, res){
 res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
-res.setHeader('Access-Control-Allow-Origin', 'http://192.168.8.104:3000');   
+
 R_state[req.params.Relay]="1";
 res.type('text/plain');
 console.log(R_state[req.params.Relay]);
@@ -63,7 +63,7 @@ res.send("value update to"+R_state[req.params.Relay]); });
 
 app.get('/reset/:Relay', function(req, res){
 res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
-res.setHeader('Access-Control-Allow-Origin', 'http://192.168.8.104:3000');   
+ 
 R_state[req.params.Relay]="0";
 res.type('text/plain');
 console.log(R_state[req.params.Relay]);
@@ -73,7 +73,7 @@ res.send("value updated to "+R_state[req.params.Relay]); });
   //http://localhost:3333/user/Admin/password --> current password
 app.get('/user/:login/:email', function(req, res){
  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
- res.setHeader('Access-Control-Allow-Origin', 'http://192.168.8.104:3000');   
+
  res.type('text/plain');
  res.send(users[req.params.login][req.params.email]);    
   });    
