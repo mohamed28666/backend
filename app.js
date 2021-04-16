@@ -24,7 +24,8 @@ app.set('port', process.env.PORT || 3333);
 
 app.use(express.static(__dirname + '/untitled_VR'));
 app.get('/troisd', function(req, res){
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
+  //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
     
   
   res.sendFile(__dirname+'/untitled_VR/untitled_VR.65.html');  });
@@ -35,13 +36,13 @@ app.get('/troisd', function(req, res){
 
 
 app.get('/', function(req, res){
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
  
 res.type('text/plain');
 res.send(R_state);  });
 
 app.get('/:Relay', function(req, res){
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
 
 res.type('text/plain');
 console.log(R_state[req.params.Relay]);
@@ -54,7 +55,7 @@ res.send(R_state[req.params.Relay]);
 });
 
 app.get('/set/:Relay', function(req, res){
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
 
 R_state[req.params.Relay]="1";
 res.type('text/plain');
@@ -62,7 +63,7 @@ console.log(R_state[req.params.Relay]);
 res.send("value update to"+R_state[req.params.Relay]); });
 
 app.get('/reset/:Relay', function(req, res){
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); 
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
  
 R_state[req.params.Relay]="0";
 res.type('text/plain');
@@ -72,7 +73,7 @@ res.send("value updated to "+R_state[req.params.Relay]); });
   //http://localhost:3333/user/Admin/email  --> current email
   //http://localhost:3333/user/Admin/password --> current password
 app.get('/user/:login/:email', function(req, res){
- res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
 
  res.type('text/plain');
  res.send(users[req.params.login][req.params.email]);    
@@ -104,7 +105,7 @@ res.status(500);
 res.send('500 - Server Error');
 });
 app.listen(app.get('port'), function(){
-console.log( 'Express started on http://localhost:' +
+console.log( 'Express started on https://frontend28.herokuapp.com:' +
 app.get('port') + '; press Ctrl-C to terminate.' );
 });
 
