@@ -70,7 +70,7 @@ app.post('/api/login', function (req, res) {
     const token = generateAccessToken({ username: req.body.email });
     res.cookie('auth11', token,{
       expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
-    ,Domain: '.herokuapp.com'});
+    ,Domain: '.herokuapp.com',encode: String});
     //sessionstorage.setItem('auth', token);
     //console.log(localStorage.getItem('auth', token));
     // console.log("wsol houni")
