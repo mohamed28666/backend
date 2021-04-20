@@ -1,14 +1,5 @@
 # window.name
 
-[![Made by unshift][made-by]](http://unshift.io)[![Version npm][version]](http://browsenpm.org/package/window.name)[![Build Status][build]](https://travis-ci.org/unshiftio/window.name)[![Dependencies][david]](https://david-dm.org/unshiftio/window.name)[![Coverage Status][cover]](https://coveralls.io/r/unshiftio/window.name?branch=master)[![IRC channel][irc]](http://webchat.freenode.net/?channels=unshift)
-
-[made-by]: https://img.shields.io/badge/made%20by-unshift-00ffcc.svg?style=flat-square
-[version]: https://img.shields.io/npm/v/window.name.svg?style=flat-square
-[build]: https://img.shields.io/travis/unshiftio/window.name/master.svg?style=flat-square
-[david]: https://img.shields.io/david/unshiftio/window.name.svg?style=flat-square
-[cover]: https://img.shields.io/coveralls/unshiftio/window.name/master.svg?style=flat-square
-[irc]: https://img.shields.io/badge/IRC-irc.freenode.net%23unshift-00a8ff.svg?style=flat-square
-
 A DOM Storage API compatible storage layer for storing data in the `window.name`
 property.
 
