@@ -71,7 +71,7 @@ app.post('/api/login', function (req, res) {
     // res.cookie('auth11', token,{
     //   expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
     // ,Domain: 'frontend28.herokuapp.com',encode: String});
-    res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true })
+    res.cookie('name', 'tobi', { domain: '.herokuapp.com', path: '/', secure: true })
     //sessionstorage.setItem('auth', token);
     //console.log(localStorage.getItem('auth', token));
     // console.log("wsol houni")
