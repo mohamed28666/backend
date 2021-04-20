@@ -120,6 +120,7 @@ app.get('/:Relay', function (req, res) {
 });
 
 app.get('/set/:Relay', authenticateToken, (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
