@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const crpt = require('crypto');
 const dotenv = require('dotenv');
 var cors = require('cors');
-const localStorage=require("localStorage");
+const localStorage = require("localStorage");
 var sessionstorage = require('sessionstorage');
 //jwt begin
 
@@ -64,20 +64,22 @@ app.post('/api/login', function (req, res) {
   console.log(users.Admin.password);
   console.log(req.body.email);
   console.log(users.Admin.email);
-  
+
   if ((users.Admin.email === req.body.email) && (users.Admin.password === req.body.password)) {
     console.log("true")
     const token = generateAccessToken({ username: req.body.email });
     res.cookie('auth', token);
-    sessionstorage.setItem('auth', token);
+    //sessionstorage.setItem('auth', token);
     //console.log(localStorage.getItem('auth', token));
-   // console.log("wsol houni")
+    // console.log("wsol houni")
     //if (typeof window !== "undefined") {
-     // window.localStorage.setItem('auth', "token");
-     //window.localStorage.getItem('auth');
+    // window.localStorage.setItem('auth', "token");
+    //window.localStorage.getItem('auth');
     //}
-   
+    
+
     res.redirect(303, 'http://localhost:3000/entered');
+   
   } else res.send("o93ed 3asba");
 
 });
@@ -89,7 +91,7 @@ app.post('/api/login', function (req, res) {
 
 
 app.get('/troisd', function (req, res) {
- // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
@@ -102,9 +104,17 @@ app.get('/troisd', function (req, res) {
 
 
 
+//for deployement BEGIN//
+app.use(express.static(path.join(__dirname, 'build')));
 
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/build/index.html');
+  //res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+//for deployement END//
+
+app.get('/SU', function (req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   res.type('text/plain');
@@ -142,7 +152,7 @@ app.get('/set/:Relay', authenticateToken, (req, res) => {
   res.send("value update to" + R_state[req.params.Relay]);
 });
 
-app.get('/reset/:Relay',authenticateToken, function (req, res) {
+app.get('/reset/:Relay', authenticateToken, function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
@@ -201,14 +211,14 @@ app.listen(app.get('port'), function () {
 
 
 //added
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, 'fron-endapp/my-app/build')));
-  // Handle React routing, return all requests to React app
-  app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'fron-endapp/my-app/build', 'index.html'));
-  });
-}
+// if (process.env.NODE_ENV === 'production') {
+//   // Serve any static files
+//   app.use(express.static(path.join(__dirname, 'fron-endapp/my-app/build')));
+//   // Handle React routing, return all requests to React app
+//   app.get('*', function (req, res) {
+//     res.sendFile(path.join(__dirname, 'fron-endapp/my-app/build', 'index.html'));
+//   });
+// }
 
 
 // ** MIDDLEWARE ** //
@@ -216,7 +226,8 @@ if (process.env.NODE_ENV === 'production') {
 app.use(express.static(path.join(__dirname, 'build')));
 
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/build/index.html');
+  //res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 //for deployement END//
