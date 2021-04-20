@@ -66,7 +66,7 @@ app.post('/api/login', function (req, res) {
   if ((users.Admin.email === req.body.email) && (users.Admin.password === req.body.password)) {
     console.log("true")
     const token = generateAccessToken({ username: req.body.email });
-    res.cookie('auth', token,{ domain: 'frontend28.herokuapp.com', path: '/' });
+    res.cookie('auth', token,{ domain: '.frontend28.herokuapp.com', path: '/' });
     
     res.redirect(303, 'https://frontend28.herokuapp.com/entered');
   } else res.send("o93ed 3asba");
