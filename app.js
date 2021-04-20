@@ -76,7 +76,7 @@ app.post('/api/login', function (req, res) {
     // window.localStorage.setItem('auth', "token");
     //window.localStorage.getItem('auth');
     //}
-    
+    console.log(token);
 
     res.redirect(303, 'https://frontend28.herokuapp.com/entered');
    
