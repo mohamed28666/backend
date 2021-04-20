@@ -68,7 +68,7 @@ app.post('/api/login', function (req, res) {
     const token = generateAccessToken({ username: req.body.email });
     res.cookie('auth', token);
     
-    res.redirect(303, 'https://frontend28.herokuapp.com/entered');
+    res.redirect(303, 'http://localhost:3000/entered');
   } else res.send("o93ed 3asba");
 
 });
@@ -80,7 +80,7 @@ app.post('/api/login', function (req, res) {
 
 
 app.get('/troisd', function (req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');   
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
@@ -96,7 +96,7 @@ app.get('/troisd', function (req, res) {
 
 
 app.get('/', function (req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   res.type('text/plain');
   res.send(R_state);
@@ -184,7 +184,7 @@ app.use(function (err, req, res, next) {
   res.send('500 - Server Error');
 });
 app.listen(app.get('port'), function () {
-  console.log('Express started on https://frontend28.herokuapp.com:' +
+  console.log('Express started on http://localhost:3000:' +
     app.get('port') + '; press Ctrl-C to terminate.');
 });
 
