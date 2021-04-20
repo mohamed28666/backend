@@ -68,7 +68,7 @@ app.post('/api/login', function (req, res) {
     const token = generateAccessToken({ username: req.body.email });
     res.cookie('auth', token);
     
-    res.redirect(303, 'http://localhost:3000/entered');
+    res.redirect(303, 'https://frontend28.herokuapp.com/entered');
   } else res.send("o93ed 3asba");
 
 });
