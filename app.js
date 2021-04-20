@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 function generateAccessToken(username) {
-  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '324h' });
+  return jwt.sign(username, process.env.TOKEN_SECRET, { expiresIn: '24h' });
 }
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
@@ -68,7 +68,7 @@ app.post('/api/login', function (req, res) {
   if ((users.Admin.email === req.body.email) && (users.Admin.password === req.body.password)) {
     console.log("true")
     const token = generateAccessToken({ username: req.body.email });
-    res.cookie('auth', token);
+    res.cookie('auth', token,{ domain: '.heroku.com', path: '/', secure: true });
     //sessionstorage.setItem('auth', token);
     //console.log(localStorage.getItem('auth', token));
     // console.log("wsol houni")
