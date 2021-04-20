@@ -68,7 +68,9 @@ app.post('/api/login', function (req, res) {
   if ((users.Admin.email === req.body.email) && (users.Admin.password === req.body.password)) {
     console.log("true")
     const token = generateAccessToken({ username: req.body.email });
-    res.cookie('auth11', token,{ domain: 'heroku.com' });
+    res.cookie('auth11', token,{
+      expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
+    });
     //sessionstorage.setItem('auth', token);
     //console.log(localStorage.getItem('auth', token));
     // console.log("wsol houni")
