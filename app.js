@@ -68,10 +68,10 @@ app.post('/api/login', function (req, res) {
   if ((users.Admin.email === req.body.email) && (users.Admin.password === req.body.password)) {
     console.log("true")
     const token = generateAccessToken({ username: req.body.email });
-    res.cookie('auth', token,{
+    res.cookie('auth', token, {
       expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
     });
-    
+
     //sessionstorage.setItem('auth', token);
     //console.log(localStorage.getItem('auth', token));
     // console.log("wsol houni")
@@ -81,8 +81,8 @@ app.post('/api/login', function (req, res) {
     //}
     console.log(token);
 
-    res.redirect(303, 'https://frontend28.herokuapp.com/entered');
-   
+    res.redirect(303, 'http://localhost:3000/entered');
+
   } else res.send("o93ed 3asba");
 
 });
@@ -94,7 +94,7 @@ app.post('/api/login', function (req, res) {
 
 
 app.get('/troisd', function (req, res) {
-  // res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');   
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');   
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
@@ -118,7 +118,7 @@ app.get('/', (req, res) => {
 //for deployement END//
 
 app.get('/SU', function (req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
   res.type('text/plain');
   res.send(R_state);
@@ -142,7 +142,7 @@ app.get('/:Relay', function (req, res) {
 });
 
 app.get('/set/:Relay', authenticateToken, (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://frontend28.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
@@ -168,8 +168,8 @@ app.get('/reset/:Relay', authenticateToken, function (req, res) {
   res.send("value updated to " + R_state[req.params.Relay]);
 });
 
-//https://backedn.herokuapp.com/user/Admin/email  --> current email
-//https://backedn.herokuapp.com/user/Admin/password --> current password
+//http://localhost:3333/user/Admin/email  --> current email
+//http://localhost:3333/user/Admin/password --> current password
 app.get('/user/:login/:email', function (req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
@@ -207,7 +207,7 @@ app.use(function (err, req, res, next) {
   res.send('500 - Server Error');
 });
 app.listen(app.get('port'), function () {
-  console.log('Express started on https://backedn.herokuapp.com:' +
+  console.log('Express started on http://localhost:3333:' +
     app.get('port') + '; press Ctrl-C to terminate.');
 });
 
