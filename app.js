@@ -104,7 +104,16 @@ app.get('/troisd', function (req, res) {
   res.sendFile(__dirname + '/untitled_VR/untitled_VR.65.html');
 });
 //res.sendFile('/untitled_VR/untitled_VR.65.html',{ root: __dirname });  });
+app.get('/websocketfile', function (req, res) {
+  // res.setHeader('Access-Control-Allow-Origin', 'https://frontend288.herokuapp.com');   
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS");
 
+  res.sendFile(__dirname + '/websocketclient_file/client.html');
+});
 
 
 //for deployement BEGIN//
