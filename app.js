@@ -138,8 +138,11 @@ app.get('/getDHT11', function (req, res) {
   res.send(DHT);
 });
 app.get('/postDHT11/:Temperature/:Humidity', function (req, res) {
-  console.log(req.params);
   DHT= req.params;
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.type('text/plain');
+  console.log(req.params);
+  
   res.send("Updated")
   
 
