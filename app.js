@@ -137,9 +137,10 @@ app.get('/getDHT11', function (req, res) {
   res.type('text/plain');
   res.send(DHT);
 });
-app.post('/postDHT11/:Temperature/:Humidity', function (req, res) {
+app.get('/postDHT11/:Temperature/:Humidity', function (req, res) {
   console.log(req.params);
   DHT= req.params;
+  res.send("Updated")
   
 
 });
