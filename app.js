@@ -126,7 +126,7 @@ app.get('/', (req, res) => {
   res.send( 'Backend');
   //res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-app.get('/getDHT11', function (req, res) {
+app.get('/get', function (req, res) {
   // res.setHeader('Access-Control-Allow-Origin', 'https://frontend288.herokuapp.com');   
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Credentials", "true");
