@@ -48,7 +48,9 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 let rawdata = fs.readFileSync('relaystate.json');
+let rawDHt=fs.readFileSync('DHT.json');
 let R_state = JSON.parse(rawdata);
+let DHT= JSON.parse(rawDHt);
 console.log(R_state["relay"]);
 // read userfile
 let userraw = fs.readFileSync('users.json');
@@ -121,14 +123,31 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/build/index.html');
+  res.send( 'Backend');
   //res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+app.get('/getDHT11', function (req, res) {
+  // res.setHeader('Access-Control-Allow-Origin', 'https://frontend288.herokuapp.com');   
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Max-Age", "1800");
+  res.setHeader("Access-Control-Allow-Headers", "content-type");
+  res.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS");
+
+  res.type('text/plain');
+  res.send(DHT);
+});
+app.post('/postDHT11/:Temperature/:Humidity', function (req, res) {
+  console.log(req.params);
+  DHT= req.params;
+  
+
 });
 //for deployement END//
 
 app.get('/SU', function (req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://frontend288.herokuapp.com');
-
+ // res.setHeader('Access-Control-Allow-Origin', 'https://frontend288.herokuapp.com');
+ res.setHeader("Access-Control-Allow-Origin", "*")
   res.type('text/plain');
   res.send(R_state);
 });
