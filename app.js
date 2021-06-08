@@ -129,11 +129,6 @@ app.get('/', (req, res) => {
 app.get('/get', function (req, res) {
   // res.setHeader('Access-Control-Allow-Origin', 'https://frontend288.herokuapp.com');   
   res.setHeader("Access-Control-Allow-Origin", "*")
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Max-Age", "1800");
-  res.setHeader("Access-Control-Allow-Headers", "content-type");
-  res.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS");
-
   res.type('text/plain');
   res.send(DHT);
 });
