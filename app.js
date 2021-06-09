@@ -132,7 +132,7 @@ app.get('/get', function (req, res) {
   res.type('text/plain');
   res.send(DHT);
 });
-app.get('/postDHT11/:Temperature/:Humidity', function (req, res) {
+app.post('/postDHT11/:Temperature/:Humidity', function (req, res) {
   DHT= req.params;
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.type('text/plain');
